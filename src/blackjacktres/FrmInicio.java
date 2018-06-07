@@ -5,10 +5,12 @@
  */
 package blackjacktres;
 
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +24,8 @@ public class FrmInicio extends javax.swing.JFrame {
      */
     public FrmInicio() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("\\icon.png"));
     }
 
     /**
@@ -36,48 +40,54 @@ public class FrmInicio extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
         btnServidor = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BlackJack");
+        setMinimumSize(new java.awt.Dimension(640, 385));
+        setResizable(false);
+        setSize(new java.awt.Dimension(650, 390));
+        getContentPane().setLayout(null);
 
+        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        btnSalir.setMnemonic('S');
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir);
+        btnSalir.setBounds(389, 160, 95, 61);
 
+        btnCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnCliente.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        btnCliente.setMnemonic('C');
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCliente);
+        btnCliente.setBounds(276, 160, 95, 61);
 
+        btnServidor.setBackground(new java.awt.Color(255, 255, 255));
+        btnServidor.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        btnServidor.setMnemonic('S');
         btnServidor.setText("Servidor");
         btnServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnServidorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnServidor);
+        btnServidor.setBounds(163, 160, 95, 61);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addComponent(btnServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Blackjack.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 640, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,6 +114,10 @@ public class FrmInicio extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +149,11 @@ public class FrmInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+
+                }
                 new FrmInicio().setVisible(true);
             }
         });
@@ -144,5 +163,6 @@ public class FrmInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnServidor;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

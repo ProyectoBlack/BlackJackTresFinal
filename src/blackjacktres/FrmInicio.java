@@ -1,7 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * a)
+ * Missael Flores González 16410118.
+ * Osvaldo Bosquez Garcia 16410108.
+ *
+ * b)
+ * 12/06/2018
+ *
+ * c)
+ * 52 horas aprox.
+ *
+ * d)
+ * En este proyecto tuvimos 3 principales problemas.
+ * 1) No sabiamos como empezar.
+ * Al principio no entendiamos muy bien como comenzar a trabajar, queriamos hacer
+ * todo al mismo tiempo, esto creo muchos problemas en el codigo hasta que decidimos
+ * volver a empezar.
+ *
+ * 2) Volver a comenzar.
+ * Una vez que decidimos volver a empezar todo fue más facil, ya que ahora
+ * nos enfocamos en completar tareas especificas por dia. De igual forma, esto
+ * fue un contratiempo ya que volvimos a empezar de cero.
+ *
+ * 3) Pensar.
+ * Sin duda una de los mayores contratiempos fue el echo de pensar en formas
+ * de que el codigo funcionaram, en ocasiones nos tamaba todo un dia o dos
+ * pensar en alguna forma de hacerlo funcionar.
+ *
+ * e)
+ * Este proyecto sin duda alguna nos ayudo mucho a comprender la programación en
+ * java y reafirmar nuestros conocimientos previamente adquiridos.
+ * De igual forma pude aquirir nuevos conocimientos y nos ayudo a desarrollar
+ * un pensamiento analitico para la solución de problemas dificiles.
+ *
+ * f)
+ *
+ * codigo que fue usado para la base de nuestro proyecto.
+ * https://www.taringa.net/posts/ciencia-educacion/15381041/Codigo-de-Blackjack-en-java-netbeans.html
+ *
+ * Codigo para obtener el maximo valor de una lista.
+ * https://stackoverflow.com/questions/8304767/how-to-get-maximum-value-from-the-list-arraylist
+ *
+ * Codigo para borrar todos los elementos de una lista.
+ * https://stackoverflow.com/questions/17279519/removing-items-from-a-list
+ *
  */
 package blackjacktres;
 
@@ -25,7 +66,7 @@ public class FrmInicio extends javax.swing.JFrame {
     public FrmInicio() {
         initComponents();
         setLocationRelativeTo(null);
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("\\icon.png"));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("icono\\icon.png"));
     }
 
     /**
@@ -59,7 +100,7 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(389, 160, 95, 61);
+        btnSalir.setBounds(10, 150, 95, 61);
 
         btnCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnCliente.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
@@ -71,7 +112,7 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCliente);
-        btnCliente.setBounds(276, 160, 95, 61);
+        btnCliente.setBounds(10, 80, 95, 61);
 
         btnServidor.setBackground(new java.awt.Color(255, 255, 255));
         btnServidor.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
@@ -83,7 +124,7 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnServidor);
-        btnServidor.setBounds(163, 160, 95, 61);
+        btnServidor.setBounds(10, 10, 95, 61);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Blackjack.jpeg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -92,34 +133,60 @@ public class FrmInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * En este boton abrimos el FrmJuego usando el constructor del servidor. No
+     * requerimos pasar ninguna variable ya que de eso se va a encargar el
+     * FrmJuego.
+     *
+     * @param evt
+     */
     private void btnServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServidorActionPerformed
         FrmJuego juego = new FrmJuego();
         juego.setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_btnServidorActionPerformed
 
+    /**
+     * En este boton iniciamos la conexion del cliente al servidor, primero
+     * preguntamos al cliente la direccion ip del servidor y su nombre,
+     * Conectamos al cliente con el servidor y llamamos al constructor del
+     * FrmJuego pero como cliente, es por eso que le mandamos un socket como
+     * parametro.
+     *
+     * @param evt
+     */
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         try {
-            String nombre = JOptionPane.showInputDialog("Nombre:");
-            Socket so = new Socket("localhost", 5000);
+            String nombre = null;
+            while (nombre == null || nombre.trim().isEmpty()) {
+                nombre = JOptionPane.showInputDialog(this, "Se requiere tu nombre para continuar");
+            }
+
+            String ip = JOptionPane.showInputDialog("Ingresa la direccion ip del servidor:");
+            Socket so = new Socket(ip, 5000);
 
             FrmJuego juego = new FrmJuego(so, nombre);
 
             juego.setVisible(true);
             this.dispose();
         } catch (IOException ex) {
-            Logger.getLogger(FrmInicio.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro al conectar con el servidor:");
         }
 
 
     }//GEN-LAST:event_btnClienteActionPerformed
-
+    /**
+     * Este boton solo se encarga de salir del juego en caso de no quere jugar.
+     *
+     * @param evt
+     */
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
+     * &
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

@@ -1,10 +1,50 @@
-package blackjacktres;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * a)
+ * Missael Flores González 16410118.
+ * Osvaldo Bosquez Garcia 16410108.
+ *
+ * b)
+ * 12/06/2018
+ *
+ * c)
+ * 52 horas aprox.
+ *
+ * d)
+ * En este proyecto tuvimos 3 principales problemas.
+ * 1) No sabiamos como empezar.
+ * Al principio no entendiamos muy bien como comenzar a trabajar, queriamos hacer
+ * todo al mismo tiempo, esto creo muchos problemas en el codigo hasta que decidimos
+ * volver a empezar.
+ * 
+ * 2) Volver a comenzar.
+ * Una vez que decidimos volver a empezar todo fue más facil, ya que ahora
+ * nos enfocamos en completar tareas especificas por dia. De igual forma, esto
+ * fue un contratiempo ya que volvimos a empezar de cero.
+ * 
+ * 3) Pensar.
+ * Sin duda una de los mayores contratiempos fue el echo de pensar en formas
+ * de que el codigo funcionaram, en ocasiones nos tamaba todo un dia o dos
+ * pensar en alguna forma de hacerlo funcionar.
+ * 
+ * e)
+ * Este proyecto sin duda alguna nos ayudo mucho a comprender la programación en
+ * java y reafirmar nuestros conocimientos previamente adquiridos.
+ * De igual forma pude aquirir nuevos conocimientos y nos ayudo a desarrollar
+ * un pensamiento analitico para la solución de problemas dificiles.
+ * 
+ * f)
+ * 
+ * codigo que fue usado para la base de nuestro proyecto.
+ * https://www.taringa.net/posts/ciencia-educacion/15381041/Codigo-de-Blackjack-en-java-netbeans.html
+ * 
+ * Codigo para obtener el maximo valor de una lista.
+ * https://stackoverflow.com/questions/8304767/how-to-get-maximum-value-from-the-list-arraylist
+ * 
+ * Codigo para borrar todos los elementos de una lista.
+ * https://stackoverflow.com/questions/17279519/removing-items-from-a-list
+ *
  */
-
+package blackjacktres;
 
 /**
  *
@@ -37,18 +77,21 @@ figura = pal;
 public int getFigura() {
 return figura;
 }
+
 public int getValor() {
 return valor;
 }
+
 public String getFiguraString() {
 switch ( figura ) {
 case TREBOLES: return "Treboles";
 case CORAZONES: return "Corazones";
 case DIAMANTES: return "Diamantes";
 case PICAS: return "Picas";
-default: return "??";
+default: return "No se pudo obtener nigun palo";
 }
 }
+
 public String getValorString() {
 switch ( valor ) {
 case 1: return "As";
@@ -64,7 +107,7 @@ case 10: return "10";
 case 11: return "J";
 case 12: return "Q";
 case 13: return "K";
-default: return "??";
+default: return "No se pudo obtener nigun valor";
 }
 }
 public String toString() {
